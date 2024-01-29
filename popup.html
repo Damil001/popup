@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popup and Redirect with Animation</title>
+    <style>
+        /* Styles for the popup */
+        #popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 0;
+            transform: translateX(-100%);
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            animation: slideIn 0.5s ease-out forwards; /* Animation for sliding in */
+        }
+
+        /* Animation keyframes */
+        @keyframes slideIn {
+            to {
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Popup Content -->
+<div id="popup">
+    <p>This is a popup!</p>
+    <p>Redirecting in <span id="countdown">5</span> seconds...</p>
+</div>
+
+<script>
+    // Function to display the popup and start the countdown
+    function showPopup() {
+        var popup = document.getElementById('popup');
+        popup.style.display = 'block';
+
+        var countdownElement = document.getElementById('countdown');
+        var countdown = 5;
+
+        // Update the countdown every second
+        var countdownInterval = setInterval(function () {
+            countdown--;
+            countdownElement.innerText = countdown;
+
+            // Redirect after 5 seconds
+            if (countdown === 0) {
+                clearInterval(countdownInterval);
+                window.location.href = 'https://www.google.com'; // Change the URL to your desired destination
+            }
+        }, 1000);
+    }
+
+    // Call the showPopup function when the page is loaded
+    window.onload = showPopup;
+</script>
+
+</body>
+</html>
