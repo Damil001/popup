@@ -47,14 +47,15 @@
     <p>This is a popup!</p>
     <img src="/Image.png" alt="" srcset="">
     <p>Redirecting in <span id="countdown">5</span> seconds...</p>
-    <button onclick="Open()" id="btn-primary">See on dealers site</button>
+    <!-- <button onclick="Open()" id="btn-primary">See on dealers site</button> -->
+    <a href="https://www.google.com" id="btn" target="_blank">See on dealers site </a>
 </div>
 
 <script>
 
     // Function to display the popup and start the countdown
 
-    const btn = document.getElementById('btn-primary');
+    const btn = document.getElementById('btn');
 
     function Open() {
             window.open("https://www.google.com", "_blank");
@@ -73,6 +74,7 @@
             // Redirect after 5 seconds
             if (countdown === 0) {
                 clearInterval(countdownInterval);
+                
                 btn.click();
                 
 
