@@ -31,11 +31,10 @@
                 transform: translate(-50%, -50%) scale(1);
             }
         }
-        #popup img{
-
+        #popup img {
             object-fit: cover;
         }
-        .link{
+        .link {
             display: none;
             visibility: hidden;
         }
@@ -48,21 +47,23 @@
     <p>This is a popup!</p>
     <img src="/Image.png" alt="" srcset="">
     <p>Redirecting in <span id="countdown">5</span> seconds...</p>
-    <button id ="link" class="link" onclick="redirectToGoogle()">Redirect to Google</button>
+    <button onclick="Open()" id="btn-primary">See on dealers site</button>
 </div>
 
 <script>
+
     // Function to display the popup and start the countdown
+
+    const btn = document.getElementById('btn-primary');
+
+    function Open() {
+            window.open("https://www.google.com", "_blank");
+        }
     function showPopup() {
         var popup = document.getElementById('popup');
         popup.style.display = 'block';
-        var link = document.getElementById('link');
-
         var countdownElement = document.getElementById('countdown');
         var countdown = 5;
-        function redirectToGoogle() {
-        window.open('https://www.google.com', '_blank');
-    }
 
         // Update the countdown every second
         var countdownInterval = setInterval(function () {
@@ -72,11 +73,12 @@
             // Redirect after 5 seconds
             if (countdown === 0) {
                 clearInterval(countdownInterval);
-                redirectToGoogle(); // Replace with your desired external URL
+                btn.click();
+                
+
             }
         }, 1000);
     }
-
     // Call the showPopup function when the page is loaded
     window.onload = showPopup;
 </script>
